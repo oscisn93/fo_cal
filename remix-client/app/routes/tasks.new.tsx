@@ -1,5 +1,5 @@
 import type { ActionArgs } from "@remix-run/node";
-import { redirect } from "@remix-run/node";
+import { redirect, ActionFunction } from "@remix-run/node";
 import { useActionData } from "@remix-run/react";
 import { db } from "~/services/db.server";
 import { badRequest } from "~/services/request.server";
@@ -10,7 +10,7 @@ import { badRequest } from "~/services/request.server";
  * @returns fieldError string
  * TODO: Add specific logic for api integration
  */
-function validateTaskTitle(title: string): string | void {
+function validateTaskTitle(title: string): string | undefined {
   if (title.length < 3) {
     return "Name must be at least three characters in length";
   }
@@ -22,16 +22,17 @@ function validateTaskTitle(title: string): string | void {
  * @returns fieldError string
  * TODO: Add specific logic for api integration
  */
-function validateTaskDescription(description: string): string | void {
+function validateTaskDescription(description: string): string | undefined {
   if (description.length < 10) {
     return "Description must be at least ten characters long";
   }
 }
 
-export const action = async ({ request }: ActionArgs) => {
+export const action: ActionFunction = async ({ request }: ActionArgs) => {
   const form = await request.formData();
   const description = form.get("description");
   const title = form.get("title");
+
   if (typeof description !== "string" || typeof title !== "string") {
     badRequest({
       fieldErrors: null,
@@ -56,7 +57,7 @@ export const action = async ({ request }: ActionArgs) => {
   }
 
   const task = await db.task.create({
-    data: fields as { title: string; description: string },
+    data: fields,
   });
   return redirect(`/tasks/${task.id}`);
 };

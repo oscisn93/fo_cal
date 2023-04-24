@@ -4,7 +4,7 @@ const db = new PrismaClient();
 async function seed() {
   await Promise.all(
     getTasks().map((task: any) => {
-      const data = { userId: "832fc74a-1396-46fa-b0fb-060618923f20", ...task}
+      const data = { userId: "832fc74a-1396-46fa-b0fb-060618923f20", ...task };
       return db.task.create({ data });
     })
   );
