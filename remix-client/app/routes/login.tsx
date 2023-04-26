@@ -27,9 +27,8 @@ function validateUsername(username: string) {
  * TODO: validation logic for password
  */
 function validatePassword(password: string) {
-  if (password.length < 8) {
+  if (password.length < 8)
     return "Password must be at least 8 characters long";
-  }
 }
 
 /**
@@ -39,7 +38,7 @@ function validatePassword(password: string) {
  * TODO: include any other possible url
  */
 function validateUrl(url: string) {
-  let urls = ["/tasks", "/", "https://remix.run"];
+  let urls = ["/tasks", "/"];
   if (urls.includes(url)) {
     return url;
   }
