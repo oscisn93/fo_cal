@@ -3,12 +3,13 @@ import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import { db } from "~/services/db.server";
 
 export const loader = async () => {
+  const tasks = await db.task.findMany({
+    orderBy: { createdAt: "asc" },
+    select: { id: true, title: true },
+    take: 5,
+  });
   return json({
-    taskListItems: await db.task.findMany({
-      orderBy: { createdAt: "asc"},
-      select: { id: true, title: true },
-      take: 5,
-    }),
+    taskListItems: tasks
   });
 };
 

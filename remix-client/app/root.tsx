@@ -1,10 +1,10 @@
 import type { LinksFunction } from "@remix-run/node";
 import { Links, LiveReload, Outlet } from "@remix-run/react";
-import globalStylesUrl from "~/css/pico.min.css";
+// import globalStylesUrl from "~/css/pico.min.css";
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: globalStylesUrl },
-];
+// export const links: LinksFunction = () => [
+//   { rel: "stylesheet", href: globalStylesUrl },
+// ];
 
 export default function App() {
   return (
