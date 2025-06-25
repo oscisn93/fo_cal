@@ -1,34 +1,68 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
 
-/* This file is primarily for long lists of utility classes so as to keep the jsx clean */
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
 
-/*|||-----|\\\V///| Landing Page Styles |\\\V///|-----|||*/
-/* TODO: ADD STYLES FOR LANDING PAGE */
-
-/*|||-----|\\\V///| Home Page Styles |\\\V///|-----|||*/
-/* TODO: ADD STYLES FOR HOME PAGE */
-
-/*|||-----|\\\V///| Calendar Page Styles |\\\V///|-----|||*/
-/* Add-Task-Button */
-.btn-blue {
-  @apply fixed top-20 right-10 justify-end z-10
-    rounded-md bg-blue-800 h-12 px-4 py-2 font-bold text-white   
-    hover:opacity-70;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Calendar-Container */
-.calendar-container {
-  @apply z-0 w-full min-h-full justify-center bg-white pb-4 shadow-lg;
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
 }
 
-/*|||-----|\\\V///| Projects Page Styles |\\\V///|-----|||*/
-.projects-container {
-  @apply z-0 w-full lg:w-11/12 mx-auto bg-white my-2 py-6 shadow-lg justify-center grid col-span-3;
-}
-.project_column {
-  @apply rounded-md w-1/3 h-full mx-1 my-2 bg-slate-100;
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
 
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

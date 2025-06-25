@@ -1,36 +1,10 @@
-import os
-
-basedir = os.path.abspath(os.path.dirname(__file__))
-
-# Todo: Look into config options needed
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
-class Config:
-    """Non environment specific confic options are contained here"""
-
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-
-    @staticmethod
-    def init_app(app):
-        pass
-
-
-class DevelopmentConfig(Config):
-    """Config settings for development environment."""
-
-    SQLALCHEMY_DATABASE_URI = "sqlite:///" + \
-        os.path.join(basedir, "data.sqlite")
-
-
-class ProductionConfig(Config):
-    """Config settings for production environment."""
-
-    # TODO
-    pass
-
-
-config = {
-    "development": DevelopmentConfig,
-    "production": ProductionConfig,
-    "default": DevelopmentConfig,
-}
+class Settings(BaseSettings):
+    app_name: str
+    admin_email: str
+    convex_url: str
+    convex_deployment: str
+    # tells fastapi where to find the above settings
+    model_config = SettingsConfigDict(env_file=".env.local")

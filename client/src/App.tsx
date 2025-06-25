@@ -1,23 +1,28 @@
-import { Routes, Route } from "react-router-dom";
-import Scheduler from "./pages/Scheduler";
-import Home from "./pages/Home";
-import Landing from "./pages/Landing";
-import Projects from "./pages/Projects";
-import PrivateRoutes from "./Auth/PrivateRoute";
-import Focus from "./pages/Focus";
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import { Counter } from './features/counter/Counter'
 
-export default function App() {
+function App() {
   return (
     <>
-      <Routes>
-        <Route element={<PrivateRoutes />}>
-          <Route path="/home" element={<Home />} />
-          <Route path="/calendar" element={<Scheduler />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/focus" element={<Focus />} />
-        </Route>
-        <Route path="/" element={<Landing />} />
-      </Routes>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <Counter /> 
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
     </>
-  );
+  )
 }
+
+export default App
